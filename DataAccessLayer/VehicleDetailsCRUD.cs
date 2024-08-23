@@ -24,8 +24,8 @@ namespace DataAccessLayer
         {
             try
             {
-                var insertQuery = $"exec insertData_vehcileInformation {reg.vehicleName},{reg.vehicleNumber}," +
-                    $"{reg.InsuranceNumber},{reg.DriverContactNumber},{reg.FCdate},{reg.OwnerName} ";
+                var insertQuery = $"exec insertData_vehcileInformation '{reg.vehicleName}','{reg.vehicleNumber}'," +
+                    $"{reg.InsuranceNumber},{reg.DriverContactNumber},'{reg.FCdate}','{reg.OwnerName}' ";
                 
                 con.Open();
                 con.Execute(insertQuery);
@@ -42,8 +42,8 @@ namespace DataAccessLayer
         {
             try
             {
-                var updateQuery = $"exec UpdateValue_WhereVehcileId {reg.ID},{reg.vehicleName},{reg.vehicleNumber}," +
-                    $"{reg.InsuranceNumber},{reg.DriverContactNumber},{reg.FCdate},{reg.OwnerName} ";
+                var updateQuery = $"exec UpdateValue_WhereVehcileId {reg.vehicleId},'{reg.vehicleName}','{reg.vehicleNumber}'," +
+                    $"{reg.InsuranceNumber},{reg.DriverContactNumber},'{reg.FCdate}','{reg.OwnerName}' ";
 
                 con.Open();
                 con.Execute(updateQuery);
@@ -63,7 +63,7 @@ namespace DataAccessLayer
         {
             try
             {
-                var selectQuery = $"exec SelectAllUser_VehicleInformation";
+                var selectQuery = $" exec SelectAllUser_VehicleInformation";
                 con.Open();
                 List<VehicleDetail> result = con.Query<VehicleDetail>(selectQuery).ToList();
                 con.Close();

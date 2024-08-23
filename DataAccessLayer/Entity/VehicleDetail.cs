@@ -8,12 +8,12 @@ namespace DataAccessLayer.Entity
 {
   public  class VehicleDetail
     {
-        public int ID;
-        public string vehicleName;
-        public string  vehicleNumber;
-        public long       InsuranceNumber;
-        public long   DriverContactNumber;
-        public DateTime FCdate;
-        public string OwnerName;
+        public int vehicleId { get; set; }
+        public string vehicleName { get; set; }
+        public string  vehicleNumber { get; set; }
+        public long       InsuranceNumber { get; set; }
+        public long   DriverContactNumber { get; set; }
+        public DateTime FCdate { get; set; }
+        public string OwnerName { get; set; }
     }
 }

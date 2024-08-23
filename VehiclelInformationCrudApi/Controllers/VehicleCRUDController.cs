@@ -14,43 +14,47 @@ namespace VehiclelInformationCrudApi.Controllers
     [ApiController]
     public class VehicleCRUDController : ControllerBase
     {
-       VehicleDetail objReg = null;
+     
+        VehicleDetailsCRUD objCrud = null;
         public VehicleCRUDController()
         {
-            objReg = new VehicleDetail();
+           
+            objCrud= new VehicleDetailsCRUD();
         }
 
         // GET: api/<ValuesController>
         [HttpGet]
         public IEnumerable<VehicleDetail> Get()
         {
-            VehicleDetailsCRUD objReg = new VehicleDetailsCRUD();
-            return objReg.SelectALLVehicleInformation();
+            return objCrud.SelectALLVehicleInformation();
         }
 
         // GET api/<ValuesController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{username}")]
+        public VehicleDetail Get(string username)
         {
-            return "value";
+            return objCrud.SelectVehicleDetailByVehicleName(username);
         }
 
         // POST api/<ValuesController>
         [HttpPost]
-        public void Post([FromBody] string value)
-        {
+        public void Post( VehicleDetail value)
+        { 
+            objCrud.RegisterVehicle(value);
         }
 
         // PUT api/<ValuesController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put( [FromBody] VehicleDetail value)
         {
+            objCrud.UpdateVehileDetail(value);
         }
 
         // DELETE api/<ValuesController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            objCrud.DeleteVehicleRecord(id);
         }
     }
 }

@@ -6,19 +6,29 @@ using System.Threading.Tasks;
 using Dapper;
 using System.Data.SqlClient;
 using DataAccessLayer.Entity;
+using Microsoft.Extensions.Configuration;
 
 namespace DataAccessLayer
 {
-   public  class VehicleDetailsCRUD
+   public  class VehicleDetailsCRUD:IVehicleDetailCRUD
     {
         string connectionString = "server=desktop-blbgehj\\sqlexpress;database=VehicleInformation;user Id =sa;password=Anaiyaan@123;";
         SqlConnection con = null;
-        public VehicleDetailsCRUD()
+        public VehicleDetailsCRUD(IConfiguration configuration)
         {
+          connectionString=  configuration.GetConnectionString("DbConnection");
             con = new SqlConnection(connectionString);
 
         }
 
+        /*
+        public void DeleteVehicleRecord(long VehicleId);
+        public VehicleDetail SelectVehicleDetailByVehicleName(string username);
+        public List<VehicleDetail> SelectALLVehicleInformation();
+        public void UpdateVehileDetail(VehicleDetail reg);
+        public void RegisterVehicle(VehicleDetail reg);
+         
+         */
 
         public void RegisterVehicle(VehicleDetail reg)
         {

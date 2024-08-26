@@ -14,12 +14,12 @@ namespace VehiclelInformationCrudApi.Controllers
     [ApiController]
     public class VehicleCRUDController : ControllerBase
     {
-     
-        VehicleDetailsCRUD objCrud = null;
-        public VehicleCRUDController()
+
+        IVehicleDetailCRUD objCrud = null;
+        public VehicleCRUDController(IVehicleDetailCRUD vehicleDetail)
         {
            
-            objCrud= new VehicleDetailsCRUD();
+            objCrud= vehicleDetail;
         }
 
         // GET: api/<ValuesController>

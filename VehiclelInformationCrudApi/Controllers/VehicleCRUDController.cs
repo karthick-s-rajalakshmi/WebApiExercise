@@ -24,37 +24,40 @@ namespace VehiclelInformationCrudApi.Controllers
 
         // GET: api/<ValuesController>
         [HttpGet]
-        public IEnumerable<VehicleDetail> Get()
+        public IActionResult Get()
         {
-            return objCrud.SelectALLVehicleInformation();
+            return Ok(objCrud.SelectALLVehicleInformation());
         }
 
         // GET api/<ValuesController>/5
         [HttpGet("{username}")]
-        public VehicleDetail Get(string username)
+        public IActionResult Get(string username)
         {
-            return objCrud.SelectVehicleDetailByVehicleName(username);
+            return Ok(objCrud.SelectVehicleDetailByVehicleName(username));
         }
 
         // POST api/<ValuesController>
         [HttpPost]
-        public void Post( VehicleDetail value)
+        public IActionResult Post( VehicleDetail value)
         { 
             objCrud.RegisterVehicle(value);
+           return Ok();
         }
 
         // PUT api/<ValuesController>/5
         [HttpPut("{id}")]
-        public void Put( [FromBody] VehicleDetail value)
+        public IActionResult Put( [FromBody] VehicleDetail value)
         {
             objCrud.UpdateVehileDetail(value);
+            return Ok();
         }
 
         // DELETE api/<ValuesController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
             objCrud.DeleteVehicleRecord(id);
+            return Ok();
         }
     }
 }
